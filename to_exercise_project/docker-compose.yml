@@ -1,0 +1,28 @@
+services:
+  web:
+    build: .
+    command: gunicorn --bind 0.0.0.0:8000 to_exercise_project.wsgi:application
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_NAME=example
+      - DB_USER=nico
+      - DB_PASSWORD=abc123.
+      - DB_HOST=basededatos
+      - DB_PORT=5432
+  basededatos:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: example
+      POSTGRES_USER: nico
+      POSTGRES_PASSWORD: abc123.
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+networks:
+  default:
+    driver: bridge
