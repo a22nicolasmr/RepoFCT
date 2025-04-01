@@ -21,4 +21,5 @@ RUN pip install gunicorn
 EXPOSE 8000
 
 # Comando por defecto para ejecutar cuando se inicie el contenedor
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "to_exercise_project.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:${PORT}", "to_exercise_project.wsgi:application"]
+
