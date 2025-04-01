@@ -1,11 +1,11 @@
 services:
   web:
     build: .
-    command: gunicorn --bind 0.0.0.0:8000 to_exercise_project.wsgi:application
+    command: gunicorn --bind 0.0.0.0:10000 to_exercise_project.wsgi:application
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "10000:10000"
     environment:
       - DB_NAME=example
       - DB_USER=nico
