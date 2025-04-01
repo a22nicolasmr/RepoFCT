@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    command: gunicorn --bind 0.0.0.0:10000 to_exercise_project.wsgi:application
+    command: gunicorn --bind 0.0.0.0:10000 --log-level debug to_exercise_project.wsgi:application
     volumes:
       - .:/code
     ports:
