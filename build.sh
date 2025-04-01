@@ -10,3 +10,6 @@ python to_exercise_project/manage.py migrate
 
 # Collect static files
 python to_exercise_project/manage.py collectstatic --no-input
+
+# Start the server with gunicorn
+gunicorn to_exercise_project.wsgi:application --bind 0.0.0.0:$PORT
