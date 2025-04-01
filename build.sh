@@ -11,5 +11,5 @@ python to_exercise_project/manage.py migrate
 # Collect static files
 python to_exercise_project/manage.py collectstatic --no-input
 
-# Start the server with gunicorn
-gunicorn to_exercise_project.wsgi:application --bind 0.0.0.0:$PORT
+# Start the Django development server on the correct host and port
+python to_exercise_project/manage.py runserver 0.0.0.0:$PORT
