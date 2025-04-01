@@ -89,13 +89,14 @@ WSGI_APPLICATION = 'to_exercise_project.wsgi.application'
 #     }
 # }
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get(
-            'DATABASE_URL',
-            'postgresql://nico:abc123.@basededatos:5432/example'
-        ),
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'example'),
+        'USER': os.environ.get('DB_USER', 'nico'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'abc123.'),
+        'HOST': os.environ.get('DB_HOST', 'basededatos'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+    }
 }
 
 
@@ -152,3 +153,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
