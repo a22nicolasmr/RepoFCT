@@ -10,7 +10,7 @@ services:
     name: to_exercise_project
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn to_exercise_project.wsgi:application"
+    startCommand: "python to_exercise_project/manage.py runserver"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
