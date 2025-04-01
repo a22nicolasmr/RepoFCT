@@ -88,17 +88,22 @@ WSGI_APPLICATION = 'to_exercise_project.wsgi.application'
 #         'PORT': os.environ.get('DB_PORT', '5432'),
 #     }
 # }
+# settings.py
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'example'),
-        'USER': os.environ.get('DB_USER', 'nico'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'abc123.'),
-        'HOST': os.environ.get('DB_HOST', 'basededatos'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True  # Obligatorio en Render
+    )
 }
 
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split()
+
+# Archivos estáticos
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Password validation
