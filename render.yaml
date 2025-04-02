@@ -24,6 +24,6 @@ services:
       - key: DEBUG
         value: "False"  # ¡Importante para producción!
       - key: ALLOWED_HOSTS
-        value: "to-exercise-project.onrender.com"  # Reemplaza con tu URL real
+        value: "https://to-exercise-project-pt3a.onrender.com"  # Reemplaza con tu URL real
       - key: WEB_CONCURRENCY
         value: 4
