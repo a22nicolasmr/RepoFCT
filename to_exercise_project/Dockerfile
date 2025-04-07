@@ -5,7 +5,7 @@ FROM python:3.11
 WORKDIR /code
 
 # Copia el archivo de requisitos al contenedor
-COPY requirements.txt .
+COPY requirements.txt /code/
 
 # Instala las dependencias del proyecto
 RUN pip install --no-cache-dir -r requirements.txt

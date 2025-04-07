@@ -1,12 +1,15 @@
-# docker-compose.yml (solo para desarrollo local)
+
 services:
   web:
-    build: .
+    build:
+      context: .  # El contexto de construcción es la raíz del proyecto
+      dockerfile: Dockerfile  # Ruta al Dockerfile dentro de la carpeta to_exercise_project
     command: gunicorn --bind 0.0.0.0:10000 to_exercise_project.wsgi:application
     environment:
       - DATABASE_URL=postgres://nico:abc123.@basededatos:5432/example
     depends_on:
       - basededatos
+
   basededatos:
     image: postgres:15
     environment:
@@ -15,3 +18,6 @@ services:
       POSTGRES_PASSWORD: abc123.
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
