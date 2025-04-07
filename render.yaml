@@ -13,7 +13,6 @@ services:
       pip install -r requirements.txt
       python manage.py collectstatic --noinput
       python manage.py migrate
-    startCommand: gunicorn --bind 0.0.0.0:$PORT to_exercise_project.wsgi:application
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -22,8 +21,8 @@ services:
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG
-        value: "False"  # ¡Importante para producción!
+        value: "False" # ¡Importante para producción!
       - key: ALLOWED_HOSTS
-        value: "to-exercise-project-pt3a.onrender.com"  # Reemplaza con tu URL real
+        value: "to-exercise-project-pt3a.onrender.com" # Reemplaza con tu URL real
       - key: WEB_CONCURRENCY
         value: 4
