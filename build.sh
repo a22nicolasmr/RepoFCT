@@ -2,6 +2,7 @@
 # Exit on error
 set -o errexit
 
+# establece cual es la raiz del proyecto
 # export PYTHONPATH=$PYTHONPATH:/opt/render/project/src/to_exercise_project
 export PYTHONPATH=$PYTHONPATH:/opt/render/project/src
 
