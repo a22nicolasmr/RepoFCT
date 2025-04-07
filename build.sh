@@ -2,7 +2,9 @@
 # Exit on error
 set -o errexit
 
-export PYTHONPATH=$PYTHONPATH:/opt/render/project/src/to_exercise_project
+# export PYTHONPATH=$PYTHONPATH:/opt/render/project/src/to_exercise_project
+export PYTHONPATH=$PYTHONPATH:/opt/render/project/src
+
 
 # Install dependencies
 pip install -r requirements.txt
